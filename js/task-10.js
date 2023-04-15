@@ -7,7 +7,11 @@ btnCreate.addEventListener('click', createBoxes);
 btnDestroy.addEventListener('click', destroyBoxes);
 
 function createBoxes() {
-  const overallAmount = input.value;
+  const overallAmount = Number(input.value);
+  if (overallAmount < 1 || overallAmount > 100) {
+    alert('Please enter a number from 1 to 100');
+    return;
+  }
 
   for (let i = 0; i < overallAmount; i++) {
     const size = 30 + i * 10;
@@ -21,6 +25,7 @@ function createBoxes() {
 
 function destroyBoxes() {
   boxDiv.innerHTML = '';
+  input.value = '';
 }
 
 function getRandomHexColor() {
