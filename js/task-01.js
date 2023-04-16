@@ -20,7 +20,7 @@ categoryItems.forEach((item) => {
 //* Отримуємо посилання на список категорій та його елементи
 
 const categoryList = document.getElementById('categories');
-const categoryItems = categoryList.children;
+const categoryItems = Array.from(categoryList.children);
 
 // * Виводимо в консоль кількість категорій
 
@@ -28,12 +28,12 @@ console.log(`Number of categories: ${categoryItems.length}`);
 
 //* Перебираємо кожен елемент списку
 
-for (let i = 0; i < categoryItems.length; i++) {
+categoryItems.forEach((category) => {
   //? Отримуємо заголовок категорії та список елементів внутрішніх пунктів
-  const categoryTitle = categoryItems[i].firstElementChild.textContent;
-  const categoryElements = categoryItems[i].lastElementChild.children;
+  const categoryTitle = category.firstElementChild.textContent;
+  const categoryElements = category.lastElementChild.children;
 
   //? Виводимо інформацію про категорію та її кількість елементів
   console.log(`Category: ${categoryTitle}`);
   console.log(`Elements: ${categoryElements.length}`);
-}
+});
